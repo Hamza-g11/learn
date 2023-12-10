@@ -1,0 +1,172 @@
+
+zip(x,y)  for multiple iterable in for or smtng like dat
+---------------input : katsma7 lina bach ndekhlo data
+a = input("name :")
+print(f'hi Mr {a}')
+'---------------Data Type
+-print(type(variable)) : had methode bach n3erfo type dyal l var
+
+int , float , string , bool 
+-complex : x = a3
+
+-list :['a','b','c'] ; 
+'        adding 2 list , a = list1 + list2 ; 
+'        print(list[0]) ; 
+'        print(list[0:3]) , kangol lih tba3 liya mn 0 tal 3
+'        changing element , list[1]= 'new value'
+
+-tuple : ('a','m','k')
+
+-dict : {keys : value , keys : value} 
+    print(dict.keys()) , bach ntba3 ga3 l keys dyal dict
+    print(dict.values()) , bach ntba3 ga3 value dya dict
+
+    bach n print chi values specific :
+        print(dict["age"]) , result : 30
+        print(dict["countries"][3]) : hna mchina l keys w khdina list element number 3
+
+    bach n modifie chi value 
+        dict["age"] = 31
+    
+    bach n add keys w value
+        dict["city"] = "casa" : haka aytzado f dict w ila kano deja atmodifa l value
+
+    bach n delete mn dict 
+        dict.pop("city")
+    
+    bach nkhwi dict 
+        dict.clear()
+
+-----------------Math func
+// : bach n7ayed decimal . ex: 10/3 =3.33 but 10//3 = 3
+% : ba9i l 9isma ex : 10/3 =1
+str() : bach n7awl type dyal int,float... to string 
+\n : rje3 l line
+f-string : katsma7 lina nketbo west string l variables ex: print(f"my name is {variable} my age is {variable}") {}kansta3mloha bach n7eto fiha l var o wakha ykon data type dyal int may7tajch ndiro lih str()
+
+---------------- Method
+.title() : katkhali awel lettre Capital ex : input("name ") : la kteb user hamza , ayweli , Hamza
+.append('text') adding in last of list
+.insert(index, element) kan3tewha index dyal element li atzid f list , o ila ma3tinahach katzid flakher
+.remove('text') deleting from last of list
+.pop(index) kan3tewha index dyal element li atm7i mn list , o ila ma3tinahach katms7 lakher
+.sort() bach nratbo element mn a-z
+.sort(reverse=true) from z-a
+.index(element) bach njbed index dyal element
+.split('- or space or _ ...') bach n fsel bin text bchi haja
+
+
+
+-------------------function
+sum()
+len()
+max()
+min()
+
+range(1,5) : aytba3 mn 1 2 3 4 : range how majal bin numbers
+
+------------------- if statement : darori nrje3 l star w nzid b tab fach nbghi nkteb dakchi li aydar
+
+and w or kaytketbo normal 
+
+if age != 20:
+    print('Hi')
+elif age > 20:
+    print('bla bla)
+.......... :
+    ..............
+else:
+    print('hello')
+
+
+--------------------------------For LOOP
+num howa aleatoire name , kangolo for each element in numbers will be in num
+
+numbers = [1, 2, 3, 4, 5]
+for num in numbers:
+    if num in [2, 4]:
+        print(num)
+
+
+------------------------------WHILE LOOP
+
+num = 5
+guess = 0
+while guess != 5:
+  guess = int(input('write your guess : '))
+  if guess == num:
+    print('you are goat')
+  else :
+    print('you are stupid')
+
+----------------------------- Function
+def name (parameters):
+    ....
+
+
+----------------------------------- using
+
+in : if 'a' in list:
+        print('yes')
+
+
+
+----------------------------------------------------------------------------- working with files
+========= open python file
+    -- import filesName
+
+    print(filesName.age)
+
+    --- 
+    import variable or func ... from files 
+
+    from filesName import Functio_A , age  // haka ghan importiw gher function ola variable mn l file/
+
+    print(age)
+    Function_A(10,20)
+
+    --- from filesName import * : hadi lfar9 binha obin lwla howa t9d t call ay variable blama dir smiyat l fil eg (age) blama dir filesName.age
+    print(age)
+
+========== open text file
+
+open("file.txt")
+print(open("file.txt"))     ### haka ghadi y3tini gher info 3la l file.
+
+a = open('file.txt')
+print(a.read())             ### .read() kat9ra lina dakchi li fel file.
+
+b = open('file.txt').read()
+print(b.readline())         ### readline() bach n9ra awel line f file .
+
+b = open('file.txt').read()
+print(b.readlines())        ### readlines() ghadir ga3 lines f list 'text text text \n' 7ta enter gha tba3ha 3la had chkel \n
+
+b = open('file.txt').read()
+print(b.splitlines())       ### kadir ga3 les line f list bla \n
+
+🚨 fach nsali mn open o nakhed mnha dakchi li baghi kan ndir liha close bach matb9ach fat7a file f L bihind
+
+c = open('file.txt').read()
+print(c.splitlines())
+c.close() # haka ankon sedit L opening
+
+#### awla n9edro ndirha b tari9a akhra
+with open('file.txt') as NameVar:
+    X = nameVar.read().splitlines()
+    print(X)
+🚨🚨 ga3 dakchi li aykon dakhel with howa li kay open o close m3a file bla mandir close
+
+========= open file in another folders
+open(r'c\desktop\folder\file.txt')
+
+========= bach n modify f text file :
+with open('file.txt' , 'w') as MyVar  ### 'w' kat3ni write mode ay haja ktebnaha ghat kteb f  file ms aytmse7 ga3 dakchi li kan fih
+    MyVar.write('text text text text')
+
+========= bach n append text f file dyali:
+with open('file.txt' , 'a') as MyVar ### 'a' kat3ni mode append bach nzid chi haja fel file blama ytmsa7 walo
+    MyVar.write('tex tex text etx ')
+
+
+

@@ -1,0 +1,11 @@
+import plotly.express as px
+px.data.tips() ### Get generated data 
+
+-- box plot use as well with outliers
+px.box(df ,x = 'col_1', y = 'col_2')
+
+-- create line chart
+px.line(df ,x = 'col_1', y = 'col_2')
+
+-- treemap
+px.treemap()

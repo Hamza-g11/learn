@@ -1,0 +1,13 @@
+import glob
+
+        # Example: List all CSV files in a directory
+        csv_files = glob.glob('path/to/directory/*.csv')
+
+        # Iterate through the list of CSV files
+        for file in csv_files:
+            # Perform data analysis tasks on each file
+            print(f'Processing file: {file}')
+            # Your data analysis code here
+
+
+katjbed lik files who end with csv e.g

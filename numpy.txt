@@ -1,0 +1,315 @@
+import numpy as np
+-------------------------------------------------
+my_list = [1, 2, 3, 4, 5]
+my_array = np.array(my_list)
+
+print(my_list)
+print(my_array)
+
+# result dyal array kay print bla , li katkon f list
+---------------------------------------------------
+a = np.array(10)                        0 Dimensionel array
+b = np.array([10, 20])                  1 Dimensionel array
+c = np.array( [ [1, 2], [3, 4] ] )      2 Dimensionel array
+d = np.array( [ [ [5, 6], [7, 9] ], [ [1, 3], [4, 8] ] ] )      3 Dimensionel array
+
+bach nselect element li baghi 
+print(d[1][0][1])  # result : 3
+print(d[1 , 0 , 1])   # result : 3
+----------------------------------------------------
+ndim : bach n3raf l array ch7al fiha mn dimensel
+
+print(a.ndim) 0
+print(b.ndim) 1
+print(c.ndim) 2
+print(d.ndim) 3
+
+shape : kay3tina ch7al mn dimensiel , o ch7al mn element fel array
+print(d.shape) ; (4 , 2) 4 homa dim , 2 homa element
+
+size : kat3tina ch7al mn element f ka3 l array
+print(d.size) ; 8
+-----------------------------------------------------
+# Custom Dimensions : number dimensiel min ya3ni a9al 7aja tkon 3andi f dimensiel 
+
+my_custom_array = np.array([1, 2, 3], ndmin=3)
+print(my_custom_array)    # [[[1, 2, 3]]] , wakha 3andna gher array wehda ra kayt7esbo 3 dimensiel array fel espace
+print(my_custom_array.ndim)     # 3
+
+print(my_custom_array[0, 0, 0])    # bach n select 1 derna index b7ala 3andna 3 dyal array
+
+-----------------------------------------------------
+###dtype : bach kan 7adedo lih data type dyal l array
+
+ab = np.array([1,2,3] , dtype=str)
+print(ab)
+'1' '2' '3'
+---------------------------------------------------
+### zeros , ones 
+
+a = np.zeros(10) ghay print 10 dyal 0 
+a = np.ones((3,5)) ghay print 3 dyal rows o 5 dyal column mn 1 1 1 1 1
+
+### labghina 7na n3ameroha b number li bghina
+
+a = np.full((3,5),7) ghay print 7 7 7 7 7
+                                7 7 7 7 7
+                                7 7 7 7 7 
+
+a = np.arange(0,10) ghay print [0 1 2 .. 9]
+
+a = np.arange(0,10,2) ghay print [0 2 4 6 8]
+######## RANDOM :
+a = np.random.random((2,4)) ghay print value bin 0,1 float         [[0.22315685 0.95322357 0.91322357 0.90322357]
+'                                                                  [0.73001205 0.94422357 0.99322357 0.87840011]]
+a = np.random.randn(2)      ghay print num positive & negative bin -1 o 1         array([-0.64608812,  0.88185732])
+
+
+a = np.eye(4,4,dtype=int)       [[1 0 0 0]      ### had eye katkhalina ndiro 9otr 
+'                                [0 1 0 0]
+'                                [0 0 1 0]
+'                                [0 0 0 1]]
+
+### astype() : bach nbedlo datatype dyal chi exist array
+
+arr = np.array([1.1, 2.1, 3.1])
+newarr = arr.astype('i')
+------------------------------------------------------------ Defference between ((Copy - View
+
+### 🚨The copy SHOULD NOT be affected by the changes made to the original array.
+
+arr = np.array([1, 2, 3, 4, 5])
+
+x = arr.copy()
+arr[0] = 42
+
+print(arr)                  [42  2  3  4  5]
+print(x)                    [1 2 3 4 5]
+
+
+### 🚨The view SHOULD be affected by the changes made to the original array.
+
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.view()
+arr[0] = 42
+
+print(arr)                  [42  2  3  4  5]
+print(x)                    [42  2  3  4  5]
+
+
+### 🚨The original array SHOULD be affected by the changes made to the view.
+
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.view()
+x[0] = 31
+
+print(arr)                  [31  2  3  4  5]
+print(x)                    [31  2  3  4  5]
+
+
+#### base() : katbyen lina wach variable fih data ola gher copie
+
+varCopy.base()   >>>  None
+varView.base()   >>>  [1 2 ....]
+
+
+#### shape : katrje3 lina tuple integer fiha (ndim , Number of element)
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(arr.shape)
+
+(2, 4)
+
+##### reshape() : 
+2D : reshape()
+a = np.array([1,2,3,6,8,0,9,8,1,8,9,9])
+a.reshape(2,6)   / nd wela 2 o fkola nd 6 element
+a.reshape(2,-1) / ghadi y7sseb auto ch7al mn element khas ykon
+the same result for both :
+array([[1, 2, 3, 6, 8, 0],
+       [9, 8, 1, 8, 9, 9]])
+
+3D : reshape(3la ch7al at9sem , kola 9esma ch7al ykon fiha mn array , ch7al mn element fel array)
+a = np.array([1,2,3,4,5,6,7,8,9,10,11,12])
+a.reshape(2,2,3)
+
+##### Resize()
+---Resized 1D array:
+arr = np.array([1, 2, 3, 4, 5])
+resized_arr = np.resize(arr, (8,))
+[1 2 3 4 5 1 2 3]
+
+---Resized 2D array:
+arr_2d = np.array([[1, 2],[3, 4]])
+resized_2d = np.resize(arr_2d, (3, 3))
+[[1 2 3]
+ [4 1 2]
+ [3 4 1]]
+
+--- 3D resize(a,(stora , array f kola star ,element f kola array))
+
+
+
+
+
+#### np.argmax(array)
+kat3tina index dyal akbar value f array
+
+#####  a.round() bach n round biha l value
+w = 5.65543
+a.round(w) ; result 6
+a.round(w,2) ; result 5.66
+a.round(w,3) ; result 5.655
+a.round(w,4) ; result 5.6554
+
+
+#### ceil(3.1) result  ; 4
+#### floor(3.9) result ; 3
+#### power(3,3) result ; 18
+#### Sqrt(18)
+
+arr = np.array([0, 1, 2])
+# Calculate the sine of each element
+sin_arr = np.sin(arr)  # [0.0, 0.84147098, 0.90929743]
+# Calculate the exponential of each element
+exp_arr = np.exp(arr)  # [1.0, 2.71828183, 7.3890561]
+
+--arr = np.array([1, 2, 3, 4, 5])
+
+#sum of all elements
+total = np.sum(arr)  # 15
+
+# mean of the elements
+avg = np.mean(arr)  # 3.0
+
+# median (l value li fel middle of array)
+np.median(arr)
+
+# Calculates the standard deviation
+np.std(arr)
+
+#Calculates the variance
+np.var(arr)
+
+#np.histogram(arr, bins=[1, 2, 3, 4, 5])
+
+#np.corrcoef(x, y)
+
+############# joining array
+-- np.concatenate : bach njma3 arrays
+    arr1 = np.array([1, 2, 3])
+    arr2 = np.array([4, 5, 6])
+    arr = np.concatenate((arr1, arr2))      result : [1 2 3 4 5 6]
+
+-- axis with concatenate : haka ayjma3 liya array li f nefs axis arr1[0] m3a arr2[0]
+    arr1 = np.array([[1, 2], [3, 4]])
+    arr2 = np.array([[5, 6], [7, 8]])
+    arr1 = np.concatenate((arr1, arr2), axis=1)     result : [[1 2 5 6][3 4 7 8]]
+
+-- stack : b axis ghanjma3 les array li f same axis
+    arr1 = np.array([1, 2, 3])
+    arr2 = np.array([4, 5, 6])
+    arr = np.stack((arr1, arr2), axis=1)    result : [[1 4][2 5][3 6]]
+
+-- dstack : ghayjma3 les elements li m9ablin f same axis blama nkhdmo b axis
+    arr1 = np.array([1, 2, 3])
+    arr2 = np.array([4, 5, 6])
+    arr = np.dstack((arr1, arr2))       result : [[[1 4][2 5][3 6]]]
+
+############## Split Array : ghay9sem array 3la 7sab ch7al mn array bghina
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+newarr = np.array_split(arr, 3)         result  :  [array([1, 2]), array([3, 4]), array([5, 6])]
+
+############## Where : use to get the index of element in array return kaykon f array
+arr = np.array([1, 2, 3, 4, 5, 4, 4])
+x = np.where(arr == 4)          result  :  (array([3, 5, 6]),)
+
+    for fill value using where 
+arr = np.array([1, 2, 3, 4, 5])
+new_arr = np.where(arr > 2, 10 , arr)
+
+-- labghina return maykonch f array
+arr = np.array([6, 7, 8, 9])
+x = np.searchsorted(arr, 7)         result  :  1
+
+-- get the index off odd number
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+x = np.where(arr%2 == 1)        result  :  (array([0, 2, 4, 6]),)
+
+-- search from the right side
+arr = np.array([6, 7, 8, 9])
+x = np.searchsorted(arr, 7, side='right')       Result  : 2
+
+-- Find the indexes where the values 2, 4, and 6 should be inserted: (wakha maykonoch )
+arr = np.array([1, 3, 5, 7])
+x = np.searchsorted(arr, [2])       result  :  [1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

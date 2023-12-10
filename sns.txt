@@ -1,0 +1,58 @@
+sns.load_dataset('flights')
+sns.set_style('darkgrid') ...
+
+
+Relational plot : 
+    --sns.scatterplot(x = column , y =column , data =df , size = column , hue = column , style=column , marker = '' , sizes = (10,30),palette = 'summer')
+    sizes = n3ti 7ajm L min value o max value
+    palette = bach kan3ti wahed gradient color
+    markers = kayakhod dict , parex {'Femme':'s','homme':'X'} , gelna lih category dyal femme ghatakhod chkel dyal square and homme Croix , s X ... kanjibohom mn site 
+    
+    --sns.lineplot(x = 'col' y='ccol' , data = df  , hue = 'col' , size = 'col' , style = 'col')
+'        size = size dyal line
+'        hue = color dyal les lines (value)
+'        style = kaykon line dashed from sgher tal kbir
+
+🚨 relplot fach kandiro kind kan9edro ndiro fiha line ola scatter , homa b7al b7al gher la dernahom fel relplot kaykono feature ktar
+
+relplot(x= column , y=column , data = df , cue ='column' , kind= 'line' , col= 'column' , row='column')
+    col = bach kan9ssem l plot 3la column parex drna column sex , aykhrej lina 2 plot wahed women o wahed men
+    row = ba7al column ghr hiya vertical
+
+
+Regression plot : kaykono buble + line (regplot howa normal , o lmplot fig lifih features)
+
+    --sns.lmplot(x=column , y=column , data = df , x_jitter = number , x_estimator = np.mean ,truncate=false , scatter_kws={'s':100,'edgecolor:'green'})
+    x_jitter : kaydir wahed espace bin les circle la kano mkhabin wra ba3diyathom kaykon bin (0.1 tal 5)
+    x_estimator :
+    truncate : bach ylsa9 dak line m3a L end o start dyal plot
+    scatter_kws : 's':100 bach nmodifier size dyal border,'edgecolor':'green' n9ad color dyal border 'ls':'--' bach nmodify dash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

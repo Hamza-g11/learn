@@ -1,0 +1,166 @@
+import matplotlib.pyplot as plt
+%matplotlib qt ############ bach n show L plot barra lcode
+%matplotlib inline ########## bach n show L plot 3adi wast lcode
+
+--- how to show result above point
+for i,j in zip(city['City'],city['Number']):
+    plt.text(i,j , str(j) , va="bottom" , ha="left")
+
+
+plt.plot(x,y)       ##### bach n cree plot
+plt.title('Sales for This Year')     ##### bach ndir title l plot
+plt.xlabel('smiya')
+plt.ylabel('smiya')
+plt.show()      ###### bach n affiche hadshi li lfo9 kaml o n9dar n cree plot jdid te7t mno 
+
+--- ila bghina nbeyno label dyal chno kay3ni kola khat 
+plt.legend(['Women',"Men]) hadi parex la kano 3andna 2 khtota f plot wahed plot li t creeya f lowel ayakhod smiya lowla o tani tanya
+or 
+plt.plot(x,y , label='Women')
+plt.plot(x,y , label='Men')
+plt.legend() ### darori n active had legend() bach ykhedmo label 
+
+--plt.figure(figsize=(8,10))
+kandiro lfo9 howa lowel bach nt7kem bih f size dyal viz
+
+--plt.grid() bach ndir grid wra plot
+
+-- bach nbdel color dyal khat
+plt.plot(x,y,color='red')
+
+-- bach nrje3 l khat m9te3
+plt.plot(x,y,  linestyle='--')
+
+-- bach nbdel width dyal khat default kaykon 1
+plt.plot(x,y ,  linewidth='2')
+
+--bach ndir wahed circle f kola point kaytla9a fiha X and Y
+plt.plot(x,y,  marker='o')
+
+-------bach nbdel style dyal plot
+
+plt.style.available     #### hadi katkhalina n affichiw smiyat dyal style l available
+
+plt.style.use('smiya dyal style')    #### haka bach kan active style
+
+-- to save the plot 
+plt.savefig('name.png') name o format kanktebhom 3adi
+
+------create bar chart
+plt.bar(x,y )
+
+--bach nbdel labels dyal x ola y
+plt.xticks(ticks = columnL9dim , labels = 'lvalue li baghi n3awed bih l9dam', rotation = 45)
+plt.yticks(.....)
+
+------- create pie chart
+plt.pie(Values, labels= ... ,wedgeprops= {'edgecolor':'black'}, explode = ... )
+-values = value li gha9sem bihom l pie
+-labels = list or columns dyal labels
+-wedgeprops = color dyal dak espace li bin ta9simat fel pie
+-explode = hiya bach ykhrej dak l tarf dyal chi value mn l pie 
+-startangle = mn 0 tal 180 degree
+-autopct = '%1.1f%%' bach nbyen pourcentage f pie 
+-rotatelabels = True  ### bach ydor label
+-pctdistance = 0.4    # bach n9areb pct l markez ola nba3do
+
+example : 
+            ex = [0.2 if a=='Canada' else 0 for a in c]
+            plt.pie(aa['Salary'],labels=aa['Country'],explode=ex)
+
+
+------------ histogram
+plt.hist(columns, bins= 5)
+bins= kandir number o kay9semhom 3lih  
+edgecolor= bach ndir wahed border 3lih
+
+plt.axvline(value)   ##bach ndir vertical line o value kankhtarha ola kan7sebha b7al mean() parex
+
+----------- scatter plot
+plt.scatter(x,y , alpha=0.2 , s =ListOfSize)
+alpha = hiya chafafiya mn 0 tal 1
+s = size dyal buble
+c = list of number or color name
+cmap = hiya wahed gradient line of colors, kanjebdo smiyat colors mn site (katsta3ml hiya w c)
+
+a = plt.colorbar() bach ndiro whed bar gradient color 7da viz
+a.set_label('title')    ## bach n3tiw title L colorbar
+
+
+-----------subPlot
+figure = ga3 l viz , axes = kola viz
+
+fig ,axes =plt.subplots(nrows=1, ncols=2 , figsize=(20,20))
+figsize : bach n9ad size dyal viz
+nrows = ch7al mn row bghina ykon
+ncols= ch7al mn column
+
+bach n9ad plot lowel kandir axes[index].plot instead of plt.plot
+axes[0].plot(x,y)
+axes[0].set_title('')
+axes[0].set_xlabel('')
+axes[0].set_ylabel('')
+
+fig , ax = plt.subplots(nrows = 1 , ncols = 2 , sharey = True)
+sharey : ghaykon 3andhom ytitle wahed
+
+axes[1].set_title('')
+axes[1].set_xlabel('')
+axes[1].set_ylabel('')
+
+axes[0].legend()
+axes[1].legend()
+
+plt.tight_layout() 
+bach yba3ed title dyal ylabel f limen 3la viz li 7dah 
+
+fig.savefig('a.png')
+bach n save result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
