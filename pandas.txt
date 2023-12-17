@@ -1,0 +1,366 @@
+~ :kat3ni L3eks
+
+import pandas as pd
+axis=1 : row
+axis=0 : column
+str.strip() = trim
+df.columns : ghay3tina name dyal ga3 column 
+str.isnumeric() : katrje3 bool , wach kola value f had column numeric if yes True if no False 
+str.contains('a') , value fiha a 
+pd.options.display.max_columns=None  ## bach nkali column kamel yban bla dok ...
+df.nunique()  ## bach nshow result without iteration
+
+---Rolling() ghayakhed wahed number dyal cells o y applique 3lihom agg function , par ex window = 3 ayakhod 3 dyal les cell li fo9 value li fiha o ghay applique 3lihom agg
+df['value'].rolling(window= 3).mean()      #window = number dyal cell li ayakhod , db ayakhod 3 dyal cell li fo9 row li fih howa o y applique 3lihom mean
+
+---Expanding() b7al rolling ms makatrje3ch NaN in first row
+df['value'].expanding().mean()
+
+d  = pd.cut(df[column] ,
+       bins=[0 ,6 ,9 , 12],
+       labels=['sbah','dhor','lil'])
+
+## cut its if , hna gelna lih ghatchof value li f df[column] ila kanet bin 0 w 6 = 'sbah' , la kanet bin 6 w 9 ='dhor' , 9 w 12 ='lil' hadshi aydiro f column jdid
+bins howa value li an3tih bin o w 6 ..
+labels homa ach ghaydir bin 0 w 6 ..
+
+labels, frequencies = np.unique(df.generated.values, return_counts = True) # var lowel ayakhod l'unique values , l var tani ayakhod count number
+
+------map() kandiro column.map(o hna dict) dict ghaykon fih value li f column o value li bghit nbdelha biha b7al f example finma ayl9a 25 f column ghayredha Young
+age_mapping = {25: 'Young', 30: 'Mid', 22: 'Young'}
+df['Age_Category'] = df['Age'].map(age_mapping)
+
+------Applymap : far9 bin apply and applymap howa apply kadar 3la each column o apply map kadar 3la l whole dataframe
+
+------df['col'].apply(function , axis = 0) , kandiro apply bach t khdem lina function , ghamchi column b column
+      df[col].apply(lambda x: x.lower())    #lamba kandiroha bach nfet7o function and X hiya parametreli kandwez f function 
+
+-------query()
+df.query('Age > 30') kayjbed mn table ga3 li validaw had condition
+
+------- cat.codes
+bach n7awel object to numbers o nchof corr binathom
+corr_ele = df.corr().astype('category')
+corr_ele = corr_ele.cat.codes
+
+------crosstab()  kaykhali l column lowl (index) ykon index , w columns ykon columns , o lvalues li kayakhed table homa counts dyal column m3a les index
+pd.crosstab(index , columns)
+
+---- stack()  
+df.stack()
+
+--unstack()
+df.unstack() kaydir wahed column f indexing o makayb9ach yt3awed like this
+part A  1
+        2
+        3
+        4
+part B  1
+        2
+        3
+        4
+---------------------------------------------------------------------------------------------------------
+--------- DataFrame : to change data into table
+mydataset = { 'cars': ["BMW", "Volvo"],
+  'passings': [3, 7] }
+pd.DataFrame(mydataset)
+result  :
+    cars  passings
+0    BMW         3
+1  Volvo         7
+
+---------- Series : It is a one-dimensional array holding data of any type(kat9bl gher 1d)
+a = [1, 7, 2]
+myvar = pd.Series(a)
+result  : 
+0    1
+1    7
+2    2
+
+---------- indexing label
+a = [1, 7, 2]
+myvar = pd.Series(a, index = ["a", "y", "z"])
+result  : 
+a    1
+y    7
+z    2
+
+n9dero n select b index like this 
+print(myvar["y"])  result   :  7
+ 
+---------- dataframe , loc
+data_1 = {"calories": [420, 380, 390],
+'            "duration": [50, 40, 45]}
+df = pd.DataFrame(data_1)
+result : 
+   calories  duration
+0       420        50
+1       380        40
+2       390        45
+🚨 (loc howa l index dyal star)
+--- loc  : print(df.loc[1])
+result  :  
+calories    380
+duration     40
+--- print(df.loc[[0,2]]🚨) ghay print 0 & 2
+   calories  duration
+0       420        50
+2       390        45
+
+--df.iloc[1]
+b7al loc gher iloc seletion by indexing o loc by label
+
+-- df.iloc[:, 0]
+ghay select kolchi mn column 0
+
+-- df.iloc[:3, 0]
+ghayselect mn 0 tal 3 mn column 0
+
+------------------ Read files 
+--- ay9ra awel o akher 5 lines
+pd.read_csv('name.csv', index_col=0 , na_values = ['?', '_-'])
+na_values = katgolih bdel L value li b7al haka '?' awla ay haja l NaN 
+had index_col=0 atkhalih y7awel column lowel l index column blama y create wahed
+or
+df.set_index("title")   ## bach n7awel chi col l index col
+df.reset_index(drop=True)    ## bach nrje3 col dyal index L col 3adi ,, o drop bach nmsa7 dak col dyal indexing
+
+--- ay9ra file kaml
+print(df.to_string())
+
+--- what is the maximum row i can show
+pd.options.display.max_rows  , n9dar n print o nchof ch7al max of row i can show
+pd.options.display.max_rows = 9999  , la bghit n modify rows li n9ed n show
+
+--- JSON objects have the same format as Python dictionaries.
+pd.read_json('file.json')
+
+--- Head(num) to get the top rows number you want
+df = pd.read_csv('data.csv')
+df.head(10)
+
+--- tail() to get the last rows number you want
+print(df.tail(8))
+
+--- info() give informations about file type of data , null rows number of rows
+print(df.info())
+
+------------------------------- cleaning the data with pandas
+'                         Empty Cells :
+-- selecting 
+df[df['column'] == 22]      ## hna gelna lih select line valuee li kaysawi 22 mn column Mat o gha shoe the entire table values 
+df[(df.column1 == 22) & (df['column2'] >= 10)]      #### & = and , | = or
+
+-- isin()  ya3ni where columninvolve those values
+df.loc[ df.column1.isin([52,82]) ]
+
+-- notnull()  kangolo lih where the value in this column are not null
+df.loc[df['column1'].notnull()]
+
+-- dropna() : drop empty entire row (🚨will not change the original) --> will return a dataframe
+df.dropna()
+
+-- df.dropna(subset=['column'], inplace = True)
+subset hiya bach kan select column li ghan mse7 mno null 
+
+-- df.dropna(how='all')
+bach n drop rows li kaml null
+
+-- fillna() bach n fill null value
+df.fillna(130, inplace = True)
+
+-- bach n fill chi column mo7adad 
+df["column"].fillna(130, inplace = True)
+
+--fillna with methode 'ffill' or 'bfill'
+df.fillna(methode = 'ffill') kat3ni fill front null with the back value
+'bfill' kat3ni fill back null with the front value
+
+--df.interpolate()
+kay fill null value , kayched back value kayzid 3liha front value o kay divise 3la 2
+
+-- .mode() (🚨 used with array not list or column)
+aktar value kat3awed kayjibha lik
+
+-- unique()    ## kayrje3 lina unique values blama yt3awdo
+df.column1.unique()
+
+-- value_counts()    ## kay3tik total count 7al group by
+df.column.value_counts()
+
+-- 
+---------------------------- rename a column 
+-- df.rename(columns = {'nameL9dim' : 'namejdid' ,'nameL9dim' : 'namejdid' .... })
+
+--------------- Data with wrong format
+-- check null value return bool
+df.isnull().any()
+-- check null value return Number
+df.isnull().sum()
+
+-- df[df['column'].isna()==1] , w ila derna 0 ya3ni li ga3ma null
+hadi bach n show the entire row where the value are NULL
+
+-- modify where value are null 
+df[df['6s'].isna()==1] =1 
+
+------------------- Drop
+drop row or column ..
+
+-- df.drop(1) to drop row by his index
+-- df.drop([0, 2]) to drop row 0 & 2
+
+-- df.drop('B', axis=1) to drop entire column by his axis
+
+-- df.drop(1, inplace=True)  # Drops the row with index 1 from the original DataFrame
+
+-- df.duplicated() # knowing duplicated rows (return boolean expression)
+
+-- df[index of column or name].value_counts()
+b7al group by o 9edamha count ex , yes t3awdat 100 mara fel column o no 80
+yes 100
+no 80
+
+-- drop_duplicates(inplace = True)
+bach n7ayed duplicate
+
+---------------------- Correlations
+
+df.corr() Show the relationship between the columns: you have to have at least 0.6 (or -0.6) to call it a good correlation.
+
+--------------------- Merging
+df.merge(df2 , how='inner' , on='ColumnRelation')
+how : inner(li hiya default),outer(kolchi),left,right
+on : column li atjma3hom relaion
+right_on : la makanch 3andhom nfs smiya dyal column
+left_on : 
+kansta3mlohom bjoj ⬆
+Left_index = labghina n diro relationship b index column 
+Right_index =
+
+df.join(df2 , how="left" )
+Lfar9 bin join o merge how ana join kat relationne b index column so labghina ndiro relation ship khassna n7awlo nefss column l index f both table
+
+-------------------- concat bach tjma3 2 dyal table
+pd.concat([df,df2], ignore_index = True)
+had ignore kat7seb index 3adi 3iwad madir l kola row l index li kan 3ando fel table dyalo
+
+pd.concat([df,df2] , keys=['table1','table2']).reset_index()
+keys katkhalik dir 7da column dyal indexing smiya dyal table awla ay smiya
+
+w ila zedna .reset_index kay9ad lina column khass b key li kay3aber 3la table
+
+-------------------------- groupby
+df.groupby('column')[['col1','col2']].sum()
+column : lcolumn li ghay groupy bih
+[[]]: les col li baghi n affich m3a groupby
+.sum ola count ... : l func li bghitha tkhdem m3a groupby
+
+df.groupby('column').aggregate({'column2':sum})
+aggregate : n3ezlo columns li bghina ybano o 9odamhom func li bghina
+
+df.groupby('column').aggregate(sum)
+ila derna haka sum ghatabe9 3la ga3 les column
+
+df.groupby('column').aggregate(sum,min,max)
+haka kola column ghaytab3o 3lih had 3 dyal func kola func f column
+
+
+------------------------- PivotTable    Lfar9 bin .pivot()  and .pivot_table()  .pivot_table kat9bel multi index column o multi column , o katkhali mn duplicate values just one
+pivot_table = df.pivot_table(values='Value',
+                             index='Category',
+                             columns='Subcategory',
+                             aggfunc=['mean', 'sum'])
+
+values hiya bach ghay3amro Cells
+index howa L column li bghit nredo f indexing
+columns hoya li ayt9asem 3la les columns
+aggfunc homa func li bghina nkhedmo bihom  🚨 aggfunc='size' bach n count biha
+
+----- awla n9edro nkhedmo b get_dummies li katkhalina n pivoter column nominal(full-time , part-time , remote)
+pd.get_dummies(df)
+kandiro gher df li hiya data dyalna
+
+------------------------- Time Series
+-- change column type to date time
+pd.to_datetime(df['Date'])
+
+maybe func to_datetime mat7awelch lina l column , n9edro n7awloh rasna b format
+pd.to_datetime(df['date'], format = '%d/%m/%D %H:%M:%S)
+
+-- get day name:
+df['columnDate'].day_name()
+
+-- dt : bach ydkhol l kola line ydir lih l func
+df['days'] = df['date'].dt.day_name()
+  days howa column zednah bach ykono fih name dyal days 
+
+-- bach n fliter b l month 
+df[df['Date'].dt.month == 5]
+
+--------------------- Resample
+bach n affiche month ola day ola week + function m3ah 🚨 khass date time ykon 3la chkel indexing column
+df['Value'].resample('M').mean()
+awla 3iwad func ndir .agg(o ndir bzf dyal function)
+ex : df['Value'].resample('M').agg('mean','sum','max')
+      or
+     df['Value'].resample('M').agg({colmun1 : ['sum','min'] , column2 : ['min','max']})
+'D': Daily
+'W': Weekly
+'M': Monthly
+'Q': Quarterly
+'A': Annual
+
+--------------------------- sorting()
+df.sort_values(by=['Salary', 'Age'], ascending=[True, False])
+bach nrateb table b column ola ktar 
+
+df.sort_index() ## bach n sort par index e.g fach nkon dayer value_counts 
+
+df.nlargest(5, 'Salary')
+Get top values (numbers of rows showing, column)
+
+--------------------------- Split()
+df['column'].str.split(pat=',')
+
+----------explode() la kan column fih list like ['balck' , 'white'] ghadi ytfare9 f nefss Lcolumns
+
+df.explode('column')
+
+--- .pct_change()
+kadar gher l numeric values 
+df
+10  20
+20  40
+10  10
+15  20
+  df.pct_change() , khda awel value fel column , o 9arenha m3a kola value bch7al tzadet
+  NaN NaN
+  1   1
+  0   -0.5
+  0.5 0
+
+  df.pct_change(axis=1) khda row kamel o 9arno m3a row li 9odamo
+  NaN   1
+  NaN   1
+  NaN   1
+  NaN   0.33
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
