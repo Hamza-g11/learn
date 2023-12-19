@@ -10,7 +10,7 @@ str.contains('a') , value fiha a
 pd.options.display.max_columns=None  ## bach nkali column kamel yban bla dok ...
 df.nunique()  ## bach nshow result without iteration
 
----- cumcount()
+---- cumcount() to create a cummulation column
 df['accumulated_values'] = df.groupby('A').cumcount()+1
 
 ---Rolling() ghayakhed wahed number dyal cells o y applique 3lihom agg function , par ex window = 3 ayakhod 3 dyal les cell li fo9 value li fiha o ghay applique 3lihom agg
